@@ -31,7 +31,7 @@
 		#map {
 			/* this makes the map size fluid */
 			width: 80%;
-			height: 60%;
+			height: 70%;
 			}
 
 		/* this sets properties of anything with the p tag */
@@ -87,8 +87,10 @@
 	Ancestor map goes here
 </div>
 
-	<!-- reference to the states JSON file. Same one we used in lecture -->
-	<script type="text/javascript" src="JS/USstates5m.json"></script>
+	<!-- reference to the US JSON file -->
+	<script type="text/javascript" src="data_json/USstates5m.json"></script>
+	<!-- reference to the OK counties JSON file. Same one we used in lecture -->
+	<script type="text/javascript" src="data_json/tl_2016_40_cousub.json"></script>
 
 	<!-- the script making the map-->
 	<script type="text/javascript">
@@ -103,7 +105,7 @@
 		}).addTo(map);
 
 		// now, add a geoJSON layer (the one pointed to above)
-		var geojson = L.geoJson(outline);
+		var US = L.geoJson(outline);
 
 		// then, we need to style the geoJSON layer
 		function style(feature) {
@@ -116,14 +118,18 @@
 				};
 			}
 	
-			geojson = L.geoJson(outline, {
+			US = L.geoJson(outline, {
 			style: style,
 				}).addTo(map);
+
+		var counties = L.geoJson(OKcounties);
+
+		counties.addTo(map);
 
 	// add a marker and a popup for GM
 	var GM = L.marker([36.69,-94.96]).addTo(map);
 
-	GM.bindPopup("<b>Afton, Oklahoma:</b Birthplace of Patricia J. Bell (1931) and Marguerite Drennan Allison (1905)").openPopup();
+	GM.bindPopup("<b>Afton, Oklahoma:</b> Birthplace of Patricia J. Bell (1931) and Marguerite Drennan Allison (1905)").openPopup();
 
 
 
