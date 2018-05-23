@@ -98,9 +98,7 @@
 		// and this adds the tile layers
 		L.tileLayer('https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ', {
 			maxZoom: 14,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+			attribution: 'Map Style © <a href="http://mapbox.com">Mapbox</a>',
 			id: 'mapbox.light'
 		}).addTo(map);
 
@@ -125,7 +123,7 @@
 	// add a marker and a popup for GM
 	var GM = L.marker([36.69,-94.96]).addTo(map);
 
-	GM.bindPopup("<b>Afton, Oklahoma:</b> Birthplace of Patricia J. Bell (1931) and Marguerite Drennan Allison (1905)").openPopup();
+	GM.bindPopup("<b>Afton, Oklahoma:</b Birthplace of Patricia J. Bell (1931) and Marguerite Drennan Allison (1905)").openPopup();
 
 
 
