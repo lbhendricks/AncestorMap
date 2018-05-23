@@ -108,7 +108,7 @@
 		var US = L.geoJson(outline);
 
 		// then, we need to style the geoJSON layer
-		function style(feature) {
+		function styleUS(feature) {
 			return {
 				weight: 1,
 				opacity: 1,
@@ -119,7 +119,7 @@
 			}
 	
 			US = L.geoJson(outline, {
-			style: style,
+			style: styleUS,
 				}).addTo(map);
 
 		var counties = L.geoJson(OKcounties);
