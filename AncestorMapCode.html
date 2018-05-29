@@ -100,7 +100,7 @@
 	<!-- reference to the US JSON file -->
 	<script type="text/javascript" src="data_json/cb_2017_us_state_5m.json"></script>
 	<!-- reference to the OK counties JSON file. Same one we used in lecture -->
-	<script type="text/javascript" src="data_json/tl_2016_40_cousub.json"></script>
+	<script type="text/javascript" src="data_json/tl_2016_40_cousub_dissolve.json"></script>
 	<!-- reference to US outline (no states) JSON file -->
 	<script type="text/javascript" src="data_json/cb_2017_us_nation_20m.json"></script>
 
@@ -122,7 +122,7 @@
 		/*var USstates = L.geoJson(states);*/
 		var USoutline = L.geoJson(US);
 
-		var counties = L.geoJson(OKcounties);
+		var Oklahoma = L.geoJson(oklahoma);
 
 
 		// then, we need to style the geoJSON layer
@@ -152,7 +152,7 @@
 		USoutline = L.geoJson(US,{style: styleUS,}).addTo(map)
 
 
-		counties = L.geoJson(OKcounties,{style:styleOK}).addTo(map)
+		Oklahoma = L.geoJson(oklahoma,{style:styleOK}).addTo(map)
 
 	// add a marker and a popup for GM
 	var GM = L.marker([36.69,-94.96]).addTo(map);

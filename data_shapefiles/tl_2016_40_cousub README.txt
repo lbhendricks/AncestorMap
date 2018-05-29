@@ -1,1 +1,1 @@
-cb_2017_us_nation_20m is a shapefile from US Census of the outline of the United Stateshttps://catalog.data.gov/dataset/tiger-line-shapefile-2016-state-oklahoma-current-county-subdivision-state-based
+cb_2017_us_nation_20m is a shapefile from US Census of the outline of the United Stateshttps://catalog.data.gov/dataset/tiger-line-shapefile-2016-state-oklahoma-current-county-subdivision-state-basedUsed mapshaper.org to dissolve all the counties into file tl_2016_40_cousub_dissolve (in data_json)
