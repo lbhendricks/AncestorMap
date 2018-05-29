@@ -159,161 +159,161 @@
 
 		PJB.bindPopup("<b>Afton, Oklahoma:</b> Birthplace of Patricia J. Bell (1931)").openPopup();
 
-		var MDG = L.marker([36.69,-94.96]).addTo(map);
+		var MDA = L.marker([36.69,-94.96]).addTo(map);
 
-		MDG.bindPopup("<b>Afton, Oklahoma:</b> Birthplace of Marguerite Drennan Allison (1905)").openPopup();
+		MDA.bindPopup("<b>Afton, Oklahoma:</b> Birthplace of Marguerite Drennan Allison (1905)").openPopup();
 		
 
-	// Button control
-	var myButtonOptions = {
-      'text': 'NEXT',  // string
-      'iconUrl': 'images/play.png',  // string
-      'onClick': my_button_onClick,  // callback function
-      'hideText': false,  // bool
-      'maxWidth': 30,  // number
-      'doToggle': false,  // bool
-      'toggleStatus': false  // bool
-	}   
+		// Button control
+		var myButtonOptions = {
+	      'text': 'NEXT',  // string
+	      'iconUrl': 'images/play.png',  // string
+	      'onClick': my_button_onClick,  // callback function
+	      'hideText': false,  // bool
+	      'maxWidth': 30,  // number
+	      'doToggle': false,  // bool
+	      'toggleStatus': false  // bool
+		}   
 
-	var myButton = new L.Control.Button(myButtonOptions).addTo(map);
-	function my_button_onClick() {
-		clickCounter = clickCounter+1;
-		var locationIndex = clickCounter%panLocations.length;
-		latlng = panLocations[locationIndex][0];
-		zoom = panLocations[locationIndex][1];
-		map.flyTo(latlng,zoom);
-		storyPane.update();
-	    console.log('Click ' + clickCounter+', zooming to location ' + locationIndex + ': ' + panLocations[locationIndex]  );
-	    console.log(latlng+' '+zoom )
-	   
-	}
+		var myButton = new L.Control.Button(myButtonOptions).addTo(map);
+		function my_button_onClick() {
+			clickCounter = clickCounter+1;
+			var locationIndex = clickCounter%panLocations.length;
+			latlng = panLocations[locationIndex][0];
+			zoom = panLocations[locationIndex][1];
+			map.flyTo(latlng,zoom);
+			storyPane.update();
+		    console.log('Click ' + clickCounter+', zooming to location ' + locationIndex + ': ' + panLocations[locationIndex]  );
+		    console.log(latlng+' '+zoom )
+		   
+		}
 
-	var clickCounter = 0;
-	var panLocations = [[[37.8, -96],5],[[44.0521,-123.0868],10],[[34.0522, -118.2437],8],[[34.5199,-105.8701],4]];
+		var clickCounter = 0;
+		var panLocations = [[[35.69,-96.96],9],[[35.69,-96.96],9],[[36.2, -96.3],9],[[36.61,-194.9],9]];
 
-	 // Simpler HTML text
+		 // Simpler HTML text
 
-	var panText = [
-					["Text 0 <br>  <a href='https://www.w3schools.com'>Hyperlink 0</a>"],
-					["Text 1 <br>  <a href='https://www.w3schools.com'>Hyperlink 1</a>"],
-					["Text 2 <br>  <a href='https://www.w3schools.com'>Hyperlink 2</a>"],
-					["Text 3 <br>  <a href='https://www.w3schools.com'>Hyperlink 3</a>"]
-				]
-
-
-	
-
-	// control for story pane
-	var storyPane = L.control({position: 'bottomleft'});
-	storyPane.onAdd = function (map) {
-		this._div = L.DomUtil.create('div', 'info');
-		this.update();
-		return this._div;
-	};
-
-	storyPane.update = function () {
-		var locationIndex = clickCounter%panLocations.length;
-		this._div.innerHTML = panText[locationIndex];
-	};
+		var panText = [
+						["Text 0 <br>  <a href='https://www.w3schools.com'>Hyperlink 0</a>"],
+						["Text 1 <br>  <a href='https://www.w3schools.com'>Hyperlink 1</a>"],
+						["Text 2 <br>  <a href='https://www.w3schools.com'>Hyperlink 2</a>"],
+						["Text 3 <br>  <a href='https://www.w3schools.com'>Hyperlink 3</a>"]
+					]
 
 
-	storyPane.addTo(map);
+		
 
-	/* Map styling function  */
-	function style(feature) {
-		return {
-			fillColor: getColor(feature.properties.density),
-			weight: 2,
-			opacity: 1,
-			color: 'white',
-			dashArray: '3',
-			fillOpacity: 0.7
+		// control for story pane
+		var storyPane = L.control({position: 'bottomleft'});
+		storyPane.onAdd = function (map) {
+			this._div = L.DomUtil.create('div', 'info');
+			this.update();
+			return this._div;
 		};
-	}
 
-	/* Map - COLOR FUNCTION below this comment  */
-	// get color depending on population density value
-	function getColor(d) {
-		return d > 1000 ? '#800026' :
-				d > 500  ? '#BD0026' :
-				d > 200  ? '#E31A1C' :
-				d > 100  ? '#FC4E2A' :
-				d > 50   ? '#FD8D3C' :
-				d > 20   ? '#FEB24C' :
-				d > 10   ? '#FED976' :
-							'#FFEDA0';
-	}
+		storyPane.update = function () {
+			var locationIndex = clickCounter%panLocations.length;
+			this._div.innerHTML = panText[locationIndex];
+		};
 
-	
-	function highlightFeature(e) {
-		var layer = e.target;
 
-		layer.setStyle({
-			weight: 5,
-			color: '#666',
-			dashArray: '',
-			fillOpacity: 0.7
-		});
+		storyPane.addTo(map);
 
-		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-			layer.bringToFront();
+		/* Map styling function  */
+		function style(feature) {
+			return {
+				fillColor: getColor(feature.properties.density),
+				weight: 2,
+				opacity: 1,
+				color: 'white',
+				dashArray: '3',
+				fillOpacity: 0.7
+			};
 		}
 
-		info.update(layer.feature.properties);
-	}
-
-	/* Adding geoJSON data */
-	geojson = L.geoJson(statesData, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);
-
-	function resetHighlight(e) {
-		geojson.resetStyle(e.target);
-		info.update();
-	}
-
-	function zoomToFeature(e) {
-		map.fitBounds(e.target.getBounds());
-	}
-
-	function onEachFeature(feature, layer) {
-		layer.on({
-			mouseover: highlightFeature,
-			mouseout: resetHighlight,
-			click: zoomToFeature
-		});
-	}
-
-
-
-	map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
-
-	// Legend Control
-	var legend = L.control({position: 'bottomright'});
-
-
-	legend.onAdd = function (map) {
-
-		var div = L.DomUtil.create('div', 'info legend'),
-			grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-			labels = [],
-			from, to;
-
-		for (var i = 0; i < grades.length; i++) {
-			from = grades[i];
-			to = grades[i + 1];
-
-			labels.push(
-				'<i style="background:' + getColor(from + 1) + '"></i> ' +
-				from + (to ? '&ndash;' + to : '+'));
+		/* Map - COLOR FUNCTION below this comment  */
+		// get color depending on population density value
+		function getColor(d) {
+			return d > 1000 ? '#800026' :
+					d > 500  ? '#BD0026' :
+					d > 200  ? '#E31A1C' :
+					d > 100  ? '#FC4E2A' :
+					d > 50   ? '#FD8D3C' :
+					d > 20   ? '#FEB24C' :
+					d > 10   ? '#FED976' :
+								'#FFEDA0';
 		}
 
-		div.innerHTML = labels.join('<br>');
-		return div;
-	};
+		
+		function highlightFeature(e) {
+			var layer = e.target;
 
-	legend.addTo(map);
+			layer.setStyle({
+				weight: 5,
+				color: '#666',
+				dashArray: '',
+				fillOpacity: 0.7
+			});
+
+			if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+				layer.bringToFront();
+			}
+
+			info.update(layer.feature.properties);
+		}
+
+		/* Adding geoJSON data */
+		geojson = L.geoJson(statesData, {
+			style: style,
+			onEachFeature: onEachFeature
+		}).addTo(map);
+
+		function resetHighlight(e) {
+			geojson.resetStyle(e.target);
+			info.update();
+		}
+
+		function zoomToFeature(e) {
+			map.fitBounds(e.target.getBounds());
+		}
+
+		function onEachFeature(feature, layer) {
+			layer.on({
+				mouseover: highlightFeature,
+				mouseout: resetHighlight,
+				click: zoomToFeature
+			});
+		}
+
+
+
+		map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
+
+		// Legend Control
+		var legend = L.control({position: 'bottomright'});
+
+
+		legend.onAdd = function (map) {
+
+			var div = L.DomUtil.create('div', 'info legend'),
+				grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+				labels = [],
+				from, to;
+
+			for (var i = 0; i < grades.length; i++) {
+				from = grades[i];
+				to = grades[i + 1];
+
+				labels.push(
+					'<i style="background:' + getColor(from + 1) + '"></i> ' +
+					from + (to ? '&ndash;' + to : '+'));
+			}
+
+			div.innerHTML = labels.join('<br>');
+			return div;
+		};
+
+		legend.addTo(map);
 </script>
 
 
