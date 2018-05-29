@@ -102,6 +102,9 @@
 	<!-- reference to the OK counties JSON file-->
 	<script type="text/javascript" src="data_json/tl_2016_40_cousub_dissolve.json"></script>
 
+	<!-- reference to the US states JSON file-->
+	<script type="text/javascript" src="data_json/cb_2017_us_state_5m.json"></script>
+
 	<!-- reference to US outline (no states) JSON file -->
 	<!-- <script type="text/javascript" src="data_json/cb_2017_us_nation_20m.json"></script> -->
 
@@ -121,14 +124,14 @@
 
 		// now, add a geoJSON layer (one of those pointed to above)
 
-		/*var USstates = L.geoJson(states);*/
+		var USstates = L.geoJson(states);
 		//var USoutline = L.geoJson(US);
 
 		var Oklahoma = L.geoJson(oklahoma);
 
 
 		// then, we need to style the geoJSON layer
-		/*function styleUS(feature) {
+		function styleUS(feature) {
 			return {
 				weight: 1,
 				opacity: 1,
@@ -137,7 +140,7 @@
 				fillOpacity: 0.2
 				};
 			} 
-			*/
+			
 
 		// then, we need to style the geoJSON layer
 		function styleOK(feature) {
@@ -150,7 +153,7 @@
 				};
 			}	
 	
-			//USstates = L.geoJson(states, {style: styleUS,}).addTo(map); 
+		USstates = L.geoJson(states, {style: styleUS,}).addTo(map); 
 
 		//USoutline = L.geoJson(US,{style: styleUS,}).addTo(map)
 
