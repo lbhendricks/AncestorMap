@@ -42,6 +42,16 @@
 			}
 	</style>
 
+	<style>
+		.info { 
+			padding: 6px 8px; 
+			font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } 
+		.info h4 { margin: 0 0 5px; color: #777; }
+		.legend { text-align: left; line-height: 18px; color: #555; } 
+		.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+		.storyPane i { width: 25px; height: 25px; float: left; margin-left: 8px; opacity: 0.4; }
+	</style>
+
 <!--
 	<style>
 		#map { width: 800px; height: 500px; }
@@ -88,9 +98,11 @@
 </div>
 
 	<!-- reference to the US JSON file -->
-	<script type="text/javascript" src="data_json/USstates5m.json"></script>
+	<script type="text/javascript" src="data_json/cb_2017_us_state_5m.json"></script>
 	<!-- reference to the OK counties JSON file. Same one we used in lecture -->
 	<script type="text/javascript" src="data_json/tl_2016_40_cousub.json"></script>
+	<!-- reference to US outline (no states) JSON file -->
+	<script type="text/javascript" src="data_json/cb_2017_us_nation_20m.json"></script>
 
 	<!-- the script making the map-->
 	<script type="text/javascript">
@@ -105,7 +117,9 @@
 		}).addTo(map);
 
 		// now, add a geoJSON layer (the one pointed to above)
-		var US = L.geoJson(outline);
+		/*var USstates = L.geoJson(states);*/
+
+		var USoutline = L.geoJson(US);
 
 		// then, we need to style the geoJSON layer
 		function styleUS(feature) {
@@ -118,13 +132,13 @@
 				};
 			}
 	
-			US = L.geoJson(outline, {
-			style: styleUS,
-				}).addTo(map);
+			//USstates = L.geoJson(states, {style: styleUS,}).addTo(map); 
 
-		var counties = L.geoJson(OKcounties);
+			USoutline = L.geoJson(US,{style: styleUS,}).addTo(map)
 
-		counties.addTo(map);
+			/*var counties = L.geoJson(OKcounties);
+
+			counties.addTo(map);*/
 
 	// add a marker and a popup for GM
 	var GM = L.marker([36.69,-94.96]).addTo(map);

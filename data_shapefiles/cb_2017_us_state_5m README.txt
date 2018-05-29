@@ -1,0 +1,1 @@
+cb_2017_us_state_5m is a shapefile from US Census of the Oklahoma borderhttps://www.census.gov/geo/maps-data/data/cbf/cbf_state.html

@@ -1,0 +1,1 @@
+cb_2017_us_nation_20m is a shapefile from US Census of the outline of the United Stateshttps://www.census.gov/geo/maps-data/data/cbf/cbf_nation.html
