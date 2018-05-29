@@ -107,7 +107,7 @@
 	<!-- the script making the map-->
 	<script type="text/javascript">
 		
-		// create the map
+		// create the map, centered on CONUS
 		var map = L.map('map').setView([37.8, -96], 4);
 
 		// add the tile layers
@@ -122,24 +122,37 @@
 		/*var USstates = L.geoJson(states);*/
 		var USoutline = L.geoJson(US);
 
+		var counties = L.geoJson(OKcounties);
+
+
 		// then, we need to style the geoJSON layer
 		function styleUS(feature) {
 			return {
 				weight: 1,
 				opacity: 1,
-				color: 'black',
+				color: 'white',
 				dashArray: '3',
-				fillOpacity: 0.7
+				fillOpacity: 0.2
 				};
 			}
+
+		// then, we need to style the geoJSON layer
+		function styleOK(feature) {
+			return {
+				weight: 1,
+				opacity: 1,
+				color: 'white',
+				dashArray: '3',
+				fillOpacity: 0.5
+				};
+			}	
 	
 			//USstates = L.geoJson(states, {style: styleUS,}).addTo(map); 
 
-			USoutline = L.geoJson(US,{style: styleUS,}).addTo(map)
+		USoutline = L.geoJson(US,{style: styleUS,}).addTo(map)
 
-			/*var counties = L.geoJson(OKcounties);
 
-			counties.addTo(map);*/
+		counties = L.geoJson(OKcounties,{style:styleOK}).addTo(map)
 
 	// add a marker and a popup for GM
 	var GM = L.marker([36.69,-94.96]).addTo(map);
