@@ -168,7 +168,7 @@
 		//
 		// 		
 		var myButtonOptions = {
-	      'text': 'Back in Time',  // string
+	      'text': 'Next',  // string
 	      'iconUrl': 'images/play.png',  // string
 	      'onClick': my_button_onClick,  // callback function
 	      'hideText': false,  // bool
@@ -182,14 +182,20 @@
 
 
 		var panText =  [
-						["<b>Patricia Jimerson</b>						<br>born 1931"],
-						["<b>Marguerite Drennan Allison</b><br>born 1905"],
-						["<b>Annie Nidiffer</b>						<br>born 1881"],
-						["<b>Joanna Linder</b>						<br>born 1861"],
-						["<b>Annie Hildebrand</b>						<br>born 1842"],
-						["<b>Lucy Ratliff</b>						<br>born 1827"],
-						["<b>Peggie Hargrave</b>						<br>born ?"]
+						"<b>Patricia Jimerson</b>						<br>born 1931",
+						"<b>Marguerite Drennan Allison</b><br>born 1905",
+						"<b>Annie Nidiffer</b>						<br>born 1881",
+						"<b>Joanna Linder</b>						<br>born 1861",
+						"<b>Annie Hildebrand</b>						<br>born 1842",
+						"<b>Lucy Ratliff</b>						<br>born 1827",
+						"<b>Peggie Hargrave</b>						<br>born ?"
 					]
+
+		var birthLoc = [
+						["Afton, Oklahoma"],
+						["Afton, Oklahoma"],
+						[]
+						]
 					
 
 		
@@ -202,8 +208,14 @@
 			storyPane.update();
 		    console.log('Click ' + clickCounter+', zooming to location ' + locationIndex + ': ' + panLocations[locationIndex]  );
 		    console.log(latlng+' '+zoom );
-		    var loc = L.marker(latlng).addTo(map);
-		    loc.bindPopup(panLocations[locationIndex]).openPopup();
+		    loc = L.marker(latlng).addTo(map);
+		    loc.bindPopup(panText[0]);
+		    console.log(panText[0]);
+		    loc.openPopup();
+		}
+
+		function AddPoint(){
+
 		}
 
 		var myButton = new L.Control.Button(myButtonOptions).addTo(map);
