@@ -171,7 +171,14 @@
 		//MDA.bindPopup("<b>Afton, Oklahoma:</b> Birthplace of Marguerite Drennan Allison (1905)").openPopup(); 
 				
 
-		// Button control
+ 
+		//
+		//
+		// Button control!
+		// button that advances in time -- zooms to different area
+		//
+		//
+		// 		
 		var myButtonOptions = {
 	      'text': 'Back in Time',  // string
 	      'iconUrl': 'images/play.png',  // string
@@ -183,7 +190,7 @@
 		}   
 
 		var clickCounter = 0;
-		var panLocations = [[[36.69,-94.96],9],[[36.69,-94.96],9],[[36.61, -94.9],9],[[36.61,-94.9],9],[[36.61,-94.9],9],[[36.65,-86.92],9],[[36.65,-86.92],9]];
+		var panLocations = [[[36.69,-94.96],6],[[36.69,-94.96],6],[[36.61, -94.9],6],[[36.61,-94.9],6],[[36.61,-94.9],6],[[36.65,-86.92],6],[[36.65,-86.92],6]];
 
 
 		var panText =  [
@@ -213,7 +220,14 @@
 		var myButton = new L.Control.Button(myButtonOptions).addTo(map);
 
 
-		// control for story pane
+
+		// 
+		//
+		//
+		// Control for story pane
+		//
+		//
+		// 
 		var storyPane = L.control({position: 'bottomleft'});
 		storyPane.onAdd = function (map) {
 			this._div = L.DomUtil.create('div', 'info');
@@ -229,20 +243,7 @@
 
 		storyPane.addTo(map);
 
-		/* Map styling function  */
-		function style(feature) {
-			return {
-				fillColor: getColor(feature.properties.density),
-				weight: 2,
-				opacity: 1,
-				color: 'white',
-				dashArray: '3',
-				fillOpacity: 0.7
-			};
-		}
-
-
-
+	
 
 		// 
 		//
