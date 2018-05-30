@@ -201,7 +201,8 @@
 			map.flyTo(latlng,zoom);
 			storyPane.update();
 		    console.log('Click ' + clickCounter+', zooming to location ' + locationIndex + ': ' + panLocations[locationIndex]  );
-		    console.log(latlng+' '+zoom )
+		    console.log(latlng+' '+zoom );
+		    L.marker(latlng).addTo(map);
 		}
 
 		var myButton = new L.Control.Button(myButtonOptions).addTo(map);
