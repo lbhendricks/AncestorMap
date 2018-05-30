@@ -28,6 +28,14 @@
 			background-color: whitesmoke;
 			}
 
+		/* this sets properties of anything with the p tag */
+		p {
+			/* gives a border and background color to text*/
+		    border-left: 6px solid blue;
+		    background-color: lightgrey;
+			}
+
+
 		/* this is settings about the map element */
 		#map {
 			/* this makes the map size fluid */
@@ -35,21 +43,13 @@
 			height: 70%;
 			}
 
-		/* this sets properties of anything with the p tag */
-		p {
-			/* gives a border and background color to text*/
-		    border-left: 6px solid blue;
-		    background-color: lightgrey;
-			}
-	</style>
-
-	<!-- this is from Joanna's example, and it sets styles for some thigns that are still undetermined-->
-	<style>
 		.info { 
 			padding: 6px 8px; 
-			font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } 
+			font: 14px/16px Arial, Helvetica, sans-serif; background: rgba(255,255,255,0.7); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } 
+
 		.info h4 { margin: 0 0 5px; color: #777; }
-		.storyPane i { width: 25px; height: 25px; float: left; margin-left: 8px; opacity: 0.4; }
+
+		.storyPane i { width: 25px; height: 2500px; float: left; margin-left: 8px; background: rgba(0,255,255,0.3); }
 	</style>
 
 </head>
@@ -202,7 +202,6 @@
 			storyPane.update();
 		    console.log('Click ' + clickCounter+', zooming to location ' + locationIndex + ': ' + panLocations[locationIndex]  );
 		    console.log(latlng+' '+zoom )
-		   
 		}
 
 		var myButton = new L.Control.Button(myButtonOptions).addTo(map);
@@ -217,6 +216,7 @@
 		//
 		// 
 		var storyPane = L.control({position: 'bottomleft'});
+
 		storyPane.onAdd = function (map) {
 			this._div = L.DomUtil.create('div', 'info');
 			this.update();
