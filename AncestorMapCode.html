@@ -295,9 +295,7 @@
 			USstates.resetStyle(e.target);
 			}
 
-		// and now to actually call that function....
-		// this is known as a listener
-		// it uses the functions that we defined for highlight and unhighlight
+		// and now a listener that uses the functions that we defined for highlight and unhighlight
 		function onEachFeature(feature, layer) {
 			layer.on({
 				mouseover: highlightFeature,
@@ -305,7 +303,7 @@
 				});
 			}
 
-		// add US states outlines to map
+		// add US states outlines to map WITH the hover functionality
 		USstates = L.geoJson(states, {
 			style: styleUS,
 			onEachFeature:onEachFeature
