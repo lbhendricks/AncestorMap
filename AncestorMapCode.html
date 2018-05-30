@@ -241,15 +241,27 @@
 			};
 		}
 
-		// control that shows state info on hover
-		var info = L.control();
 
+
+
+		// 
+		//
+		//
+		// Adding year that state entered union on hover
+		//
+		//
+
+		// control that shows state info on hover
+		// create the variable
+		var info = L.control();
+		// build the function
 		info.onAdd = function (map) {
 			this._div = L.DomUtil.create('div', 'info');
 			this.update();
 			return this._div;
 			};
 
+		// what goes into the box
 		info.update = function (props) {
 			this._div.innerHTML = '<h4>Statehood Year</h4>' +  (props ?
 				'' + props.NAME + ': ' + props.Statehood + '<br />'
@@ -265,10 +277,10 @@
 	    	var layer = e.target;
 
 		    layer.setStyle({
-		        weight: 5,
+		        weight: 2,
 		        color: '#666', // grey
 		        dashArray: '',
-		        fillOpacity: 0.7
+		        fillOpacity: 0.3
 		    	});
 		    // this does things for internet explorer, opera, and edge
 	    	if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
