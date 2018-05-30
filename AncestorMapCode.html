@@ -156,7 +156,7 @@
 			}	
 	
 		// add US states outlines to map
-		USstates = L.geoJson(states, {style: styleUS,}).addTo(map); 
+		//USstates = L.geoJson(states, {style: styleUS,}).addTo(map); 
 
 		// add Oklahoma outline to map
 		Oklahoma = L.geoJson(oklahoma,{style:styleOK}).addTo(map)
@@ -169,8 +169,7 @@
 		//var MDA = L.marker([36.69,-94.96]).addTo(map);
 
 		//MDA.bindPopup("<b>Afton, Oklahoma:</b> Birthplace of Marguerite Drennan Allison (1905)").openPopup(); 
-		
-		
+				
 
 		// Button control
 		var myButtonOptions = {
@@ -242,6 +241,63 @@
 			};
 		}
 
+		// control that shows state info on hover
+		var info = L.control();
+
+		info.onAdd = function (map) {
+			this._div = L.DomUtil.create('div', 'info');
+			this.update();
+			return this._div;
+			};
+
+		info.update = function (props) {
+			this._div.innerHTML = '<h4>Statehood Year</h4>' +  (props ?
+				'' + props.NAME + ': ' + props.Statehood + '<br />'
+				: 'Hover over a state');
+			};
+
+		info.addTo(map);
+
+
+		// now let's add some interactivity!
+		// use mouseover functions to highlight the different states when you hover over them
+		function highlightFeature(e) {
+	    	var layer = e.target;
+
+		    layer.setStyle({
+		        weight: 5,
+		        color: '#666', // grey
+		        dashArray: '',
+		        fillOpacity: 0.7
+		    	});
+		    // this does things for internet explorer, opera, and edge
+	    	if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+		        layer.bringToFront();
+		    		};
+
+		    info.update(layer.feature.properties);
+				}
+
+		// now a function that changes only the feature that the mouse touches and resets to the previous style on the other features
+		function resetHighlight(e) {
+			USstates.resetStyle(e.target);
+			}
+
+		// and now to actually call that function....
+		// this is known as a listener
+		// it uses the functions that we defined for highlight and unhighlight
+		function onEachFeature(feature, layer) {
+			layer.on({
+				mouseover: highlightFeature,
+				mouseout: resetHighlight,
+				});
+			}
+
+		// add US states outlines to map
+		USstates = L.geoJson(states, {
+			style: styleUS,
+			onEachFeature:onEachFeature
+			}).addTo(map); 
 
 </script>
 
