@@ -147,12 +147,12 @@
 
 		// will add US states  to the map later with the hover function	
 		// add Oklahoma outline to map
-		Oklahoma = L.geoJson(oklahoma,{style:styleOK}).addTo(map)
+		//Oklahoma = L.geoJson(oklahoma,{style:styleOK}).addTo(map)
 
 		// add a marker and a popup for GM
-		var PJB = L.marker([36.69,-94.96]).addTo(map);
+		//var PJB = L.marker([36.69,-94.96]).addTo(map);
 
-		PJB.bindPopup("<b>Afton, Oklahoma:</b> Birthplace of Patricia J. Bell (1931)").openPopup();
+		//PJB.bindPopup("<b>Afton, Oklahoma:</b> Birthplace of Patricia J. Bell (1931)").openPopup();
 
 		//var MDA = L.marker([36.69,-94.96]).addTo(map);
 
@@ -202,7 +202,8 @@
 			storyPane.update();
 		    console.log('Click ' + clickCounter+', zooming to location ' + locationIndex + ': ' + panLocations[locationIndex]  );
 		    console.log(latlng+' '+zoom );
-		    L.marker(latlng).addTo(map);
+		    var loc = L.marker(latlng).addTo(map);
+		    loc.bindPopup(panLocations[locationIndex]).openPopup();
 		}
 
 		var myButton = new L.Control.Button(myButtonOptions).addTo(map);
