@@ -113,26 +113,32 @@
 	<!-- the script making the map-->
 	<script type="text/javascript">
 		
+		//
+		//
+		//
+		// THE MAP
+		//
+		//
+		//
+
 		// create the map, centered on CONUS
 		var map = L.map('map').setView([37.8, -96], 4);
 
-		// add the tile layers
+		// add the tile layers, using style from mapbox
 		L.tileLayer('https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ', {
 			maxZoom: 14,
 			minZoom: 3,
 			attribution: 'Map Style © <a href="http://mapbox.com">Mapbox</a>',
 			id: 'mapbox.light'
-		}).addTo(map);
+			}).addTo(map);
 
 		// now, add a geoJSON layer (one of those pointed to above)
-
 		var USstates = L.geoJson(states);
-		//var USoutline = L.geoJson(US);
-
-		//var Oklahoma = L.geoJson(oklahoma);
+		var Oklahoma = L.geoJson(oklahoma);
 
 
-		// then, we need to style the geoJSON layer
+		// then, we need to style the geoJSON layers
+		// for the US states
 		function styleUS(feature) {
 			return {
 				weight: 1,
@@ -142,9 +148,8 @@
 				fillOpacity: 0.2
 				};
 			} 
-			
-
-		// then, we need to style the geoJSON layer
+		
+		// for Oklahoma alone
 		function styleOK(feature) {
 			return {
 				weight: 1,
@@ -155,9 +160,8 @@
 				};
 			}	
 	
-		// add US states outlines to map
-		//USstates = L.geoJson(states, {style: styleUS,}).addTo(map); 
 
+		// will add US states  to the map later with the hover function	
 		// add Oklahoma outline to map
 		Oklahoma = L.geoJson(oklahoma,{style:styleOK}).addTo(map)
 
