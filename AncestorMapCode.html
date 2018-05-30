@@ -99,14 +99,16 @@
 	Ancestor map is loading... hopefully! 
 </div>
 
-	<!-- reference to the OK counties JSON file-->
+	<!-- reference to the OK outline JSON file-->
 	<script type="text/javascript" src="data_json/tl_2016_40_cousub_dissolve.json"></script>
 
-	<!-- reference to the US states JSON file-->
-	<script type="text/javascript" src="data_json/cb_2017_us_state_5m.json"></script>
+	<!-- reference to the US states JSON file, with statehood year added-->
+	<script type="text/javascript" src="data_json/cb_2017_us_state_5m_statehood_yr_noterritories.json"></script>
 
-	<!-- reference to US outline (no states) JSON file -->
-	<!-- <script type="text/javascript" src="data_json/cb_2017_us_nation_20m.json"></script> -->
+	<!-- reference to US states JSON file -->
+	<!--
+	<script type="text/javascript" src="data_json/cb_2017_us_state_5m.json"></script>
+	-->
 
 	<!-- the script making the map-->
 	<script type="text/javascript">
@@ -127,7 +129,7 @@
 		var USstates = L.geoJson(states);
 		//var USoutline = L.geoJson(US);
 
-		var Oklahoma = L.geoJson(oklahoma);
+		//var Oklahoma = L.geoJson(oklahoma);
 
 
 		// then, we need to style the geoJSON layer
@@ -153,11 +155,10 @@
 				};
 			}	
 	
+		// add US states outlines to map
 		USstates = L.geoJson(states, {style: styleUS,}).addTo(map); 
 
-		//USoutline = L.geoJson(US,{style: styleUS,}).addTo(map)
-
-
+		// add Oklahoma outline to map
 		Oklahoma = L.geoJson(oklahoma,{style:styleOK}).addTo(map)
 
 		// add a marker and a popup for GM
@@ -197,7 +198,7 @@
 					]
 					
 
-		var myButton = new L.Control.Button(myButtonOptions).addTo(map);
+		
 		function my_button_onClick() {
 			clickCounter = clickCounter+1;
 			var locationIndex = clickCounter%panLocations.length;
@@ -210,12 +211,7 @@
 		   
 		}
 
-		
-
-		var grandmothers = ["Patricia (Jimmerson) Bell","Marguerite Drennan Allison","Annie Nidiffer","Joanna Linder","Annie Hildebrand","Lucy (Ratliff) Hildebrand","Peggie Hargrave"]
-
-	
-
+		var myButton = new L.Control.Button(myButtonOptions).addTo(map);
 
 
 		// control for story pane
