@@ -107,7 +107,6 @@
 		//
 
 		// create the map, centered on CONUS
-		//var map = L.map('map').setView([37.8, -96], 4);
 		var map = L.map('map',{
 					center:[37.8, -96],
 					zoom: 4,
@@ -124,7 +123,10 @@
 
 		// now, add a geoJSON layer (one of those pointed to above)
 		var USstates = L.geoJson(states);
-		var Oklahoma = L.geoJson(oklahoma);
+		//var Oklahoma = L.geoJson(oklahoma);
+
+		// create simple key/value object with states to be referenced in layers control
+		var overlayMap = {"State Borders": USstates};
 
 
 		// then, we need to style the geoJSON layers
@@ -348,6 +350,8 @@
 			style: styleUS,
 			onEachFeature:onEachFeature
 			}).addTo(map); 
+
+		L.control.layers(null,overlayMap).addTo(map);
 
 </script>
 
