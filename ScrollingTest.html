@@ -132,9 +132,10 @@
   ]};
 
   var map = L.mapbox.map('map', 'mapbox.streets', {
-      zoomControl: false
+      zoomControl: true
   });
 
+  // Lauren's mapbox studio tile layer
   L.tileLayer('https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ', {
       maxZoom: 14,
       minZoom: 3,
