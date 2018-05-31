@@ -15,9 +15,6 @@
     <!-- reference to Leaflet Button add-on -->
     <script type="text/javascript" src="data_js/leaflet-button-control.js"></script>
 
-    <!-- reference to Leaflet control window add on -->
-    <script type="text/javascript" src="data_js/L.Control.Window.js"></script>
-
     <!-- Style for page layout -->
 	<style>
 		html, body {
@@ -100,11 +97,7 @@
 	-->
 
 	<!-- the script making the map-->
-	<script type="text/javascript">
-
-		// Creating window object
-		//var win =  L.control.window(map,{title:'Hello world!',			content:'This is my first control window.'}).show()
-		
+	<script type="text/javascript">		
 		//
 		//
 		//
@@ -193,7 +186,9 @@
 					[[36.61,-94.9],6],
 					[[36.61, -94.9],6],
 					[[36.69,-94.96],6],
-					[[36.69,-94.96],6]
+					[[36.69,-94.96],6],
+					[[36.41,-97.87],6],
+					[[44.98,-93.25],4]
 						];
 
 		var ancestorName = ["<b>Peggie Hargrave</b>",
@@ -202,7 +197,9 @@
 						"<b>Joanna Linder</b>",
 						"<b>Annie Nidiffer</b>",
 						"<b>Marguerite Drennan Allison</b>",
-						"<b>Patricia Jimerson</b>"
+						"<b>Patricia Jimerson</b>",
+						"<b>Margaret Lynne Bell</b>",
+						"<b>Lauren Hendricks</b>"
 						]
 
 		var birthLoc = ["Cherokee Nation East (Tennessee)",
@@ -211,7 +208,9 @@
 						"Delaware County, Oklahoma",
 						"Needmore, Delaware County, Oklahoma",
 						"Afton, Otttawa County, Oklahoma",
-						"Afton, Otttawa County, Oklahoma"				
+						"Afton, Otttawa County, Oklahoma",	
+						"Enid, Garfield County, Oklahoma",	
+						"Minneapolis, Hennepin County, Minnesota"		
 						]
 					
 		var birthYear = ["uknown (early 1800s)",
@@ -220,7 +219,9 @@
 						"1861",
 						"1881",
 						"1905",
-						"1931"]
+						"1931",
+						"1954",
+						"1989"]
 
 		
 		function my_button_onClick() {
