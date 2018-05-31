@@ -103,37 +103,48 @@
   </article>
 
   <script>
-  L.mapbox.accessToken = 'pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ';
+  // with Lauren's access token
+  L.mapbox.accessToken = 'pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjamh2M2d5ajEwdXo3M3FydzQ4c2hzbzJxIn0.S5JR4g-IHGGlYu4Y7p16gg';
   
 
   // In this case, we just hardcode data into the file. This could be dynamic.
   // The important part about this data is that the 'id' property matches
   // the HTML above - that's how we figure out how to link up the
   // map and the data.
+
+  // NOTE THAT THESE NEED TO BE LONG,LAT!!!!
   var places = { type: 'FeatureCollection', features: [
-  { geometry: { type: "Point", coordinates: [-0.12960000, 51.50110000] },
-    properties: { id: "cover", zoom: 9 }, type: 'Feature' },
-  { geometry: { type: "Point", coordinates: [-0.15591514, 51.51830379] },
-    properties: { id: "one" }, type: 'Feature' },
-  { geometry: { type: "Point", coordinates: [-0.07571203, 51.51424049] },
-    properties: { id: "two" }, type: 'Feature' },
-  { geometry: { type: "Point", coordinates: [-0.08533793, 51.50438536] },
-    properties: { id: "three" }, type: 'Feature' },
-  { geometry: { type: "Point", coordinates: [0.05991101, 51.48752939] },
-    properties: { id: "four" }, type: 'Feature' },
-  { geometry: { type: "Point", coordinates: [-0.18335806, 51.49439521] },
-    properties: { id: "five" }, type: 'Feature' },
-  { geometry: { type: "Point", coordinates: [-0.19684993, 51.5033856] },
-    properties: { id: "six" }, type: 'Feature' },
-  { geometry: { type: "Point", coordinates: [-0.10669358, 51.51433123] },
-    properties: { id: "seven" }, type: 'Feature' },
-  { geometry: { type: "Point", coordinates: [-0.12416858, 51.50779757] },
-    properties: { id: "eight" }, type: 'Feature' }
-  ]};
+    { geometry: { type: "Point", coordinates: [-96,37.8] },
+      properties: { id: "cover", zoom: 3 }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-86.92,36.65,] },
+      properties: { id: "one", zoom: 6 }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-86.92,36.65] },
+      properties: { id: "two", zoom: 6 }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-94.9,36.61] },
+      properties: { id: "three", zoom: 6  }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-94.9,36.61] },
+      properties: { id: "four", zoom: 6 }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-94.96,36.69] },
+      properties: { id: "five", zoom: 6  }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-94.96,36.69] },
+      properties: { id: "six", zoom: 6 }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-97.87,36.41] },
+      properties: { id: "seven", zoom: 6  }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-93.25,44.98] },
+      properties: { id: "eight", zoom: 6  }, type: 'Feature' }
+      ]};
 
   var map = L.mapbox.map('map', 'mapbox.streets', {
       zoomControl: true
-  });
+      });
 
   // Lauren's mapbox studio tile layer
   L.tileLayer('https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ', {
