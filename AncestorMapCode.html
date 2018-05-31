@@ -107,7 +107,12 @@
 		//
 
 		// create the map, centered on CONUS
-		var map = L.map('map').setView([37.8, -96], 4);
+		//var map = L.map('map').setView([37.8, -96], 4);
+		var map = L.map('map',{
+					center:[37.8, -96],
+					zoom: 4,
+					layers: USstates,
+			})
 
 		// add the tile layers, using style from mapbox
 		L.tileLayer('https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ', {
