@@ -49,7 +49,7 @@
 
 		.info h4 { margin: 0 0 5px; color: #777; }
 
-		/*.storyPane i { width: 25px; height: 2500px; float: left; margin-left: 8px; background: rgba(0,255,255,0.3); } */
+		.storyPane i { width: 25px; height: 2500px; float: left; margin-left: 8px; background: rgba(0,255,255,0.3); } */
 	</style>
 
 </head>
@@ -213,7 +213,7 @@
 						"Minneapolis, Hennepin County, Minnesota"		
 						]
 					
-		var birthYear = ["uknown (early 1800s)",
+		var birthYear = ["birth year uknown (early 1800s)",
 						"1827",
 						"1842",
 						"1861",
@@ -230,7 +230,7 @@
 			latlng = panLocations[locationIndex][0];
 			zoom = panLocations[locationIndex][1];
 			map.flyTo(latlng,zoom);
-			//storyPane.update();
+			storyPane.update();
 		    console.log('Click ' + clickCounter+', zooming to location ' + locationIndex + ': ' + panLocations[locationIndex]  );
 		    console.log(latlng+' '+zoom );
 		    loc = L.marker(latlng).addTo(map);
@@ -243,7 +243,16 @@
 
 		var myButton = new L.Control.Button(myButtonOptions).addTo(map);
 
-
+		var narrativeText = ["something about peggie hargrave",
+							"something about Lucy Ratliff",
+							"something about annie hildebrand",
+							"something about joanna linder",
+							"something about annie nidiffer... at the age of 18, Annie Nidiffer was postmistress at a small store on Horse Creek near Grand River (Oklahoma). Today, this store is under the Grand Lake o' the Cherokees--a reservoir created for hydroelectric power in the late 1930s and early 1940s.",
+							"something about marguerite drennan allison",
+							"something about grandomther",
+							"something about mom",
+							"something about lauren"
+							]
 
 		// 
 		//
@@ -252,9 +261,9 @@
 		//
 		//
 		// 
-		//var storyPane = L.control({position: 'bottomleft'});
+		var storyPane = L.control({position: 'bottomleft'});
 
-		/*storyPane.onAdd = function (map) {
+		storyPane.onAdd = function (map) {
 			this._div = L.DomUtil.create('div', 'info');
 			this.update();
 			return this._div;
@@ -262,11 +271,11 @@
 
 		storyPane.update = function () {
 			var locationIndex = clickCounter%panLocations.length;
-			this._div.innerHTML = ancestorName[locationIndex];
+			this._div.innerHTML = narrativeText[locationIndex];
 		};
-		*/
+		
 
-		//storyPane.addTo(map);
+		storyPane.addTo(map);
 
 	
 
