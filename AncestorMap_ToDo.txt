@@ -1,7 +1,5 @@
 Ancestor Map To Do Items
 
-- figure out how to control width of story pane text
-- write text for additional story panes
-- play with on/off functionality for different layers
-- different baseman options? 
-- add different ancestor lines
+- fix pop up color changing
+- fix zoom buttons being on top of title
+- fix not going to last 2 entries
