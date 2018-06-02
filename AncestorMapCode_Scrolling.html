@@ -195,7 +195,7 @@
 
   // NOTE THAT THESE NEED TO BE LONG,LAT!!!!
   var places = { type: 'FeatureCollection', features: [
-    { geometry: { type: "Point", coordinates: [-96,44.8] },
+    { geometry: { type: "Point", coordinates: [-86.92,36.65] },
       properties: { id: "cover", zoom: 4 }, type: 'Feature' },
 
     { geometry: { type: "Point", coordinates: [-94.86,36.79] },
@@ -267,11 +267,13 @@
                 //console.log(layer.getLatLng());
                 //console.log(layer.feature.properties.zoom);
                 layer.setIcon(L.mapbox.marker.icon({
-                    'marker-color': '#a8f'
+                    'marker-color': '#6b4aae',
+                    'marker-size': 'large'
                 }));
             } else {
                 layer.setIcon(L.mapbox.marker.icon({
-                    'marker-color': '#404040'
+                    'marker-color': '#404040',
+                    'marker-size': 'small'
                 }));
             }
         });
