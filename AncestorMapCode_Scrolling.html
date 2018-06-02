@@ -83,6 +83,7 @@
       
       <section id='cover' class='cover active'>
         <h2>Mapping Maternal Ancestors</h2>
+        <p> Some descriptive text here...... </p>
         <small class='scroll quiet'>Scroll to Advance &#x25BE;</small>
       </section>
 
@@ -186,7 +187,6 @@
   <script>
   // with Lauren's access token
   L.mapbox.accessToken = 'pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjamh2M2d5ajEwdXo3M3FydzQ4c2hzbzJxIn0.S5JR4g-IHGGlYu4Y7p16gg';
-  
 
   // In this case, we just hardcode data into the file. This could be dynamic.
   // The important part about this data is that the 'id' property matches
@@ -195,29 +195,29 @@
 
   // NOTE THAT THESE NEED TO BE LONG,LAT!!!!
   var places = { type: 'FeatureCollection', features: [
-    { geometry: { type: "Point", coordinates: [-96,37.8,] },
+    { geometry: { type: "Point", coordinates: [-96,44.8] },
       properties: { id: "cover", zoom: 4 }, type: 'Feature' },
 
-    { geometry: { type: "Point", coordinates: [-86.92,36.65,] },
-      properties: { id: "one", zoom: 5 }, type: 'Feature' },
+    { geometry: { type: "Point", coordinates: [-94.86,36.79] },
+      properties: { id: "seven", zoom: 6  }, type: 'Feature' },
 
-    { geometry: { type: "Point", coordinates: [-86.92,36.65] },
-      properties: { id: "two", zoom: 7 }, type: 'Feature' },
+    { geometry: { type: "Point", coordinates: [-94.96,36.69] },
+      properties: { id: "six", zoom: 6 }, type: 'Feature' },
 
-    { geometry: { type: "Point", coordinates: [-94.9,36.61] },
+    { geometry: { type: "Point", coordinates: [-94.9,36.51] },
+      properties: { id: "five", zoom: 6  }, type: 'Feature' },
+ 
+     { geometry: { type: "Point", coordinates: [-94.75,36.61] },
+      properties: { id: "four", zoom: 6 }, type: 'Feature', },
+
+    { geometry: { type: "Point", coordinates: [-94.6,36.71] },
       properties: { id: "three", zoom: 6  }, type: 'Feature' },
 
-    { geometry: { type: "Point", coordinates: [-94.9,36.61] },
-      properties: { id: "four", zoom: 6 }, type: 'Feature' },
+    { geometry: { type: "Point", coordinates: [-87.12,36.75] },
+      properties: { id: "two", zoom: 6 }, type: 'Feature' },
 
-    { geometry: { type: "Point", coordinates: [-94.9,36.61] },
-      properties: { id: "five", zoom: 6  }, type: 'Feature' },
-
-    { geometry: { type: "Point", coordinates: [-94.96,36.69] },
-      properties: { id: "six", zoom: 14 }, type: 'Feature' },
-
-    { geometry: { type: "Point", coordinates: [-94.96,36.69] },
-      properties: { id: "seven", zoom: 6  }, type: 'Feature' },
+    { geometry: { type: "Point", coordinates: [-86.92,36.65] },
+      properties: { id: "one", zoom: 6 }, type: 'Feature' },
 
     /*{ geometry: { type: "Point", coordinates: [-97.87,36.41] },
       properties: { id: "eight", zoom: 6  }, type: 'Feature' },
@@ -226,15 +226,17 @@
     properties: { id: "nine", zoom: 6  }, type: 'Feature' }*/
       ]};
 
-  /*var map = L.mapbox.map('map', 'mapbox.streets', {
-      zoomControl: false
-      }); 
-      */
 
+ /* var map = L.mapbox.map('map',{
+      zoomControl:false
+      });
+*/
+ 
   var map = L.map('map',{
       zoomControl: false
-      });
-
+      }); 
+      
+  map.setView([-96,37.8],4);
   // Lauren's mapbox studio tile layer
   L.tileLayer('https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ', {
       attribution: 'Map Style © <a href="http://mapbox.com">Mapbox</a>',
@@ -256,30 +258,32 @@
   function setId(newId) {
       // If the ID hasn't actually changed, don't do anything
       if (newId === currentId) return;
-      // Otherwise, iterate through layers, setting the current
-      // marker to a different color and zooming to it.
-      placesLayer.eachLayer(function(layer) {
-          if (layer.feature.properties.id === newId) {
-              map.setView(layer.getLatLng(), layer.feature.properties.zoom);
-              layer.setIcon(L.mapbox.marker.icon({
-                  'marker-color': '#a8f'
-              }));
-          } else {
-              layer.setIcon(L.mapbox.marker.icon({
-                  'marker-color': '#404040'
-              }));
-          }
-      });
-      // highlight the current section
-      for (var i = 0; i < sections.length; i++) {
-          sections[i].className = sections[i].id === newId ? 'active' : '';
+      
+        // Otherwise, iterate through layers, setting the current
+        // marker to a different color and zooming to it.
+        placesLayer.eachLayer(function(layer) {
+            if (layer.feature.properties.id === newId) {
+                map.setView(layer.getLatLng(), layer.feature.properties.zoom);
+                //console.log(layer.getLatLng());
+                //console.log(layer.feature.properties.zoom);
+                layer.setIcon(L.mapbox.marker.icon({
+                    'marker-color': '#a8f'
+                }));
+            } else {
+                layer.setIcon(L.mapbox.marker.icon({
+                    'marker-color': '#404040'
+                }));
+            }
+        });
+        // highlight the current section
+        for (var i = 0; i < sections.length; i++) {
+            sections[i].className = sections[i].id === newId ? 'active' : '';
+        }
+        // And then set the new id as the current one,
+        // so that we know to do nothing at the beginning
+        // of this function if it hasn't changed between calls
+        currentId = newId;
       }
-      // And then set the new id as the current one,
-      // so that we know to do nothing at the beginning
-      // of this function if it hasn't changed between calls
-      currentId = newId;
-  }
-
   // If you were to do this for real, you would want to use
   // something like underscore's _.debounce function to prevent this
   // call from firing constantly.
