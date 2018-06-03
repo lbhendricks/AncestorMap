@@ -83,7 +83,9 @@
       
       <section id='cover' class='cover active'>
         <h2>Mapping Maternal Ancestors</h2>
-        <p> Some descriptive text here...... </p>
+        <img class="img1" src="img/PatJBell.JPG" alt="Patricia J. Bell" width="50%">
+        <p> This map displays the maternal ancestors of Patricia Bell (neé Jimerson) from the late early 1800s to present. By combining basic biographical information with the place that each person was born, we can see how major events in US history have affected individual people and their descendents. 
+      </p>
         <small class='scroll quiet'>Scroll to Advance &#x25BE;</small>
       </section>
 
@@ -242,6 +244,23 @@
     properties: { id: "nine", zoom: 6  }, type: 'Feature' }*/
       ]};
 
+/*var states = { type: 'FeatureCollection', features: [ 
+      type = "Feature",
+      properties: { 
+        "test1": "things",
+        "test2": "more things",
+        "test3": "even more things"},
+      geometry: {
+        type: "Polygon",
+        coordinates:[[
+          [-85.95,39.96],
+          [-87.97,38.27],
+          [-83.49,38.75],
+          [-85.95,39.96]
+        ]]
+      }
+    ]
+  };
 
  /* var map = L.mapbox.map('map',{
       zoomControl:false
@@ -260,6 +279,7 @@
       id: 'mapbox.light'
       }).addTo(map);
 
+//https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ
 
   var placesLayer = L.mapbox.featureLayer(places)
       .addTo(map);
