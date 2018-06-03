@@ -197,6 +197,8 @@
    <!-- reference to the US states JSON file, without AK or HI. Var = MDA (Marguerite Drennan Allision-->
   <script type="text/javascript" src="data_json/cb_2017_us_state_5m_MDA.json"></script>
 
+  <script type="text/javascript" src="data_json/test.json"></script>
+
   <script>
   // with Lauren's access token
   L.mapbox.accessToken = 'pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjamh2M2d5ajEwdXo3M3FydzQ4c2hzbzJxIn0.S5JR4g-IHGGlYu4Y7p16gg';
@@ -228,10 +230,10 @@
       properties: { id: "three", zoom: 6  }, type: 'Feature' },
 
     { geometry: { type: "Point", coordinates: [-87.12,36.75] },
-      properties: { id: "two", zoom: 6 }, type: 'Feature' },
+      properties: { id: "two", zoom: 6, state_lyr: "test" }, type: 'Feature' },
 
     { geometry: { type: "Point", coordinates: [-86.92,36.65] },
-      properties: { id: "one", zoom: 6 }, type: 'Feature' },
+      properties: { id: "one", zoom: 6, state_lyr: "MDAstates" }, type: 'Feature' },
 
     /*{ geometry: { type: "Point", coordinates: [-97.87,36.41] },
       properties: { id: "eight", zoom: 6  }, type: 'Feature' },
@@ -263,9 +265,8 @@
       .addTo(map);
 
   // now, add a geoJSON layer (one of those pointed to above)
-  var USstates = L.geoJson(states);
-
-  var MDA = L.geoJson(MDAstates);
+  //var USstates = L.geoJson(states);
+  //var MDA = L.geoJson(MDAstates);
 
   // then, we need to style the geoJSON layers
   // for the US states
@@ -280,7 +281,8 @@
     } 
 
   //USstates = L.geoJson(states,{style:styleUS}).addTo(map);
-  MDA = L.geoJson(MDAstates,{style:styleUS}).addTo(map);
+  //MDA = 
+  //L.geoJson(MDAstates,{style:styleUS}).addTo(map);
 
 
   // Ahead of time, select the elements we'll need -
@@ -306,6 +308,9 @@
                     'marker-color': '#6b4aae',
                     'marker-size': 'large'
                 }));
+                //add the states
+                //L.geoJson(state_lyr, {style:styleUS}).addTo(map);
+                //console.log(states);
             } else {
                 layer.setIcon(L.mapbox.marker.icon({
                     'marker-color': '#404040',
