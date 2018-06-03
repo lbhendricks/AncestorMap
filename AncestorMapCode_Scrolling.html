@@ -191,6 +191,9 @@
     </div>
   </article>
 
+  <script type="text/javascript" src="data_json/cb_2017_us_state_5m_statehood_yr_noterritories.json"></script>
+  <!-- reference to the US states JSON file, with statehood year added-->
+
   <script>
   // with Lauren's access token
   L.mapbox.accessToken = 'pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjamh2M2d5ajEwdXo3M3FydzQ4c2hzbzJxIn0.S5JR4g-IHGGlYu4Y7p16gg';
@@ -253,6 +256,24 @@
 
   var placesLayer = L.mapbox.featureLayer(places)
       .addTo(map);
+
+  // now, add a geoJSON layer (one of those pointed to above)
+  var USstates = L.geoJson(states);
+
+  // then, we need to style the geoJSON layers
+  // for the US states
+  function styleUS(feature) {
+    return {
+      weight: 1,
+      opacity: 1,
+      color: 'white',
+      dashArray: '3',
+      fillOpacity: 0.2
+      };
+    } 
+
+  USstates = L.geoJson(states,{style:styleUS}).addTo(map)
+
 
   // Ahead of time, select the elements we'll need -
   // the narrative container and the individual sections
