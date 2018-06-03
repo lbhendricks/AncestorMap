@@ -191,8 +191,11 @@
     </div>
   </article>
 
-  <script type="text/javascript" src="data_json/cb_2017_us_state_5m_statehood_yr_noterritories.json"></script>
   <!-- reference to the US states JSON file, with statehood year added-->
+  <script type="text/javascript" src="data_json/cb_2017_us_state_5m_statehood_yr_noterritories.json"></script>
+
+   <!-- reference to the US states JSON file, without AK or HI. Var = MDA (Marguerite Drennan Allision-->
+  <script type="text/javascript" src="data_json/cb_2017_us_state_5m_MDA.json"></script>
 
   <script>
   // with Lauren's access token
@@ -247,7 +250,8 @@
       zoomControl: false
       }); 
       
-  map.setView([-96,37.8],4);
+  //map.setView([-96,37.8],4);
+
   // Lauren's mapbox studio tile layer
   L.tileLayer('https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ', {
       attribution: 'Map Style © <a href="http://mapbox.com">Mapbox</a>',
@@ -261,6 +265,8 @@
   // now, add a geoJSON layer (one of those pointed to above)
   var USstates = L.geoJson(states);
 
+  var MDA = L.geoJson(MDAstates);
+
   // then, we need to style the geoJSON layers
   // for the US states
   function styleUS(feature) {
@@ -273,7 +279,8 @@
       };
     } 
 
-  USstates = L.geoJson(states,{style:styleUS}).addTo(map)
+  //USstates = L.geoJson(states,{style:styleUS}).addTo(map);
+  MDA = L.geoJson(MDAstates,{style:styleUS}).addTo(map);
 
 
   // Ahead of time, select the elements we'll need -
