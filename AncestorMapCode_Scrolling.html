@@ -251,7 +251,7 @@
       properties: { id: "one", zoom: 6}, type: 'Feature' },
 
     //trying to get it to return to full zoom at end
-    { geometry: { type: "Point", coordinates: [-94.86,36.79] },
+    { geometry: { type: "Point", coordinates: [-93.46,44.86] },
       properties: { id: "end", zoom: 4}, type: 'Feature' },
       
 
@@ -280,8 +280,9 @@
   var placesLayer = L.mapbox.featureLayer(places)
       .addTo(map);
 
-    // style for the US states layer
-    // want the borders to be very subtle; they're just reference info
+  
+   // style for the US states layer
+   // want the borders to be very subtle; they're just reference info
   function styleUS(feature) {
     return {
       weight: 1,
@@ -294,6 +295,36 @@
 
   // then add the states to the map
   L.geoJson(states,{style:styleUS}).addTo(map);
+  
+ 
+
+  /*
+  // function that defines a number (opacity) based on statehood year
+  function yearColor(d) {
+    return d > 1931 ? 0 :
+           d > 1905 ? .05 :
+           d > 1881 ? .2 :
+           d > 1861 ? .35 :
+           d > 1842 ? .5 :
+           d > 1827 ? .65 :
+           d > 1800 ? .8 :
+                      .95;
+    }
+
+  // function that sets the style using opacity from the function that returns number based on statehood year
+  function styleYear(feature) {
+    return {
+      fillColor: 'white' ,
+      weight: 2,
+      opacity: .4,
+      color: 'white',
+      dashArray: '3',
+      fillOpacity: yearColor(feature.properties.Statehood)/2
+      };
+    }
+
+  L.geoJson(states, {style: styleYear}).addTo(map);
+  */  
 
 
   // select the elements we'll need -
