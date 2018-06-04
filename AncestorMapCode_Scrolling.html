@@ -209,10 +209,8 @@
   <!-- reference to the US states JSON file, with statehood year added-->
   <script type="text/javascript" src="data_json/cb_2017_us_state_5m_statehood_yr_noterritories.json"></script>
 
-   <!-- reference to the US states JSON file, without AK or HI. Var = MDA (Marguerite Drennan Allision-->
-  <script type="text/javascript" src="data_json/cb_2017_us_state_5m_MDA.json"></script>
-
-  <script type="text/javascript" src="data_json/test.json"></script>
+   <!-- reference to the US states JSON file, with true/false based on lifetimes of people in map-->
+    <script type="text/javascript" src="data_json/states_yrs.json"></script>
 
   <script>
   // with Lauren's access token
@@ -289,42 +287,39 @@
       opacity: .4,
       color: 'white',
       dashArray: '3',
-      fillOpacity: 0.05
+      fillOpacity: 0, 
+      fillcolor: ""
       };
-    } 
+    }; 
 
   // then add the states to the map
-  L.geoJson(states,{style:styleUS}).addTo(map);
+  //L.geoJson(states,{style:styleUS}).addTo(map);
   
  
+   // functions that determine the value of a property of the layer and then gets fed into a filter function
+   // now can we do it where we pick the property based on the function call?
+   function drawIDcover (feature, property) {
+        if (feature.properties.cover === "TRUE") return true;
+            };
 
-  /*
-  // function that defines a number (opacity) based on statehood year
-  function yearColor(d) {
-    return d > 1931 ? 0 :
-           d > 1905 ? .05 :
-           d > 1881 ? .2 :
-           d > 1861 ? .35 :
-           d > 1842 ? .5 :
-           d > 1827 ? .65 :
-           d > 1800 ? .8 :
-                      .95;
-    }
+  function drawIDone (feature, property) {
+        if (feature.properties.one === "TRUE") return true;
+            };
 
-  // function that sets the style using opacity from the function that returns number based on statehood year
-  function styleYear(feature) {
-    return {
-      fillColor: 'white' ,
-      weight: 2,
-      opacity: .4,
-      color: 'white',
-      dashArray: '3',
-      fillOpacity: yearColor(feature.properties.Statehood)/2
-      };
-    }
+  function drawIDtwo (feature, property) {
+        if (feature.properties.two === "TRUE") return true;
+            };
 
-  L.geoJson(states, {style: styleYear}).addTo(map);
-  */  
+  function drawIDthree (feature, property) {
+        if (feature.properties.three === "TRUE") return true;
+            };
+  function drawIDfour (feature, property) {
+      if (feature.properties.four === "TRUE") return true;
+          };
+
+    function drawIDfive (feature, property) {
+      if (feature.properties.five === "TRUE") return true;
+          };
 
 
   // select the elements we'll need -
@@ -384,7 +379,22 @@
           }
         };
       setId(newId);
+
+      // draw teh states
+      drawStates(newId);
+
   };
+
+  function drawStates(id){
+        if(id==="cover")
+          {L.geoJson(states_yrs, {filter: drawIDcover, style: styleUS}).addTo(map);
+            } else if (id==="one") {L.geoJson(states_yrs, {filter: drawIDone, style: styleUS}).addTo(map);
+                } else if (id==="two") {L.geoJson(states_yrs, {filter: drawIDtwo, style:styleUS}).addTo(map);
+                    } else if (id==="three") {L.geoJson(states_yrs, {filter: drawIDthree, style:styleUS}).addTo(map);
+                        } else if (id==="four") {L.geoJson(states_yrs, {filter: drawIDfour, style: styleUS}).addTo(map);
+                            } else {L.geoJson(states_yrs, {filter: drawIDfive, style: styleUS}).addTo(map);
+              }
+      };
 
 
   </script>
