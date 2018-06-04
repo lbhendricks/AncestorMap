@@ -46,7 +46,7 @@
 
       .sections {
         background:rgba(255,255,255,0.5);
-        width:400px;
+        width:25%;
         }
 
       section {
@@ -125,7 +125,7 @@
         <h3>Joanna Ruth Linder (1861-1910)</h3>
 
         <p>
-        <img class="img2" src="img/JoannaLinder.jpg" alt="Joanna Linder" width="50%">
+        <img class="img2" src="img/JoannaLinder.jpg" alt="Joanna Linder" width="30%">
        
         Joanna Linder was born in the Delaware District of Cherokee Nation West in 1861. At the age of 15 she married Felix Grundy Nidiffer (in 1876), and they had 11 children, 10 of which survived to adulthood. After Felix's death in 1896, she remarried and had two additional children. Joanna died in 1919 in Bernice, Oklahoma. 
         </p>
@@ -185,22 +185,24 @@
 
         <br>
         <br>
-        In 1968, Pat, Don, and their four children moved to Eden Prairie, Minnesota. Pat taught English at the local high school until she and Don briefly returned to live in Tennessee in 1975. When they moved back to Eden Prairie in the late 1970s, Pat retired and began to actively pursue publishing. She is a pioneer in the world of self-publishing, and is the the author of multiple books, including <a href="https://www.amazon.com/Roughing-Elegantly-Practical-Guide-Camping/dp/0961822708"> Roughing it Elegantly: A Practical Guide to Canoe Camping</a>, based on her years of experience in northern Minnesota's Boundary Waters Canoe Area with Don. 
+        In 1968, Pat, Don, and their four children moved to Eden Prairie, Minnesota. Pat taught English at the local high school until she and Don briefly returned to live in Tennessee in 1975. When they moved back to Eden Prairie in the late 1970s, Pat retired and began to actively pursue publishing. She is a pioneer in the world of self-publishing, and is the the author of multiple books, including <a href="https://www.amazon.com/Roughing-Elegantly-Practical-Guide-Camping/dp/0961822708"> Roughing it Elegantly: A Practical Guide to Canoe Camping</a>, based on her years of experience in northern Minnesota's Boundary Waters Canoe Area with Don. She currently lives in Eden Prairie. 
         </p> 
       </section>
 
-      <section id="end"></section>
-      <!--
-      <section id='eight'>
-        <h3>Margaret Lynne Bell (1954-present)</h3>
-        <p>Lynne was born in 1954 in Enid, Oklahoma</p>
-      </section>
+      <!-- blank section -->
+      <section id="end"> 
+            <p> 
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+         </p>
 
-      <section id='nine'>
-        <h3>Lauren Hendricks (1989-present)</h3>
-        <p>Lauren was born in 1989 in Minneapolis, Minnesota.</p>
-      </section> 
-      -->
+
+      </section>
+     
     </div>
   </article>
 
@@ -243,15 +245,15 @@
       properties: { id: "three", zoom: 6  }, type: 'Feature' },
 
     { geometry: { type: "Point", coordinates: [-87.12,36.75] },
-      properties: { id: "two", zoom: 6, state_lyr: "test" }, type: 'Feature' },
+      properties: { id: "two", zoom: 6}, type: 'Feature' },
 
     { geometry: { type: "Point", coordinates: [-86.92,36.65] },
-      properties: { id: "one", zoom: 6, state_lyr: "MDAstates" }, type: 'Feature' },
+      properties: { id: "one", zoom: 6}, type: 'Feature' },
 
-    /* trying to get it to return to full zoom at end
-    { geometry: { type: "Point", coordinates: [-110.92,36.65] },
-      properties: { id: "end", zoom: 1, state_lyr: "MDAstates" }, type: 'Feature' },
-      */
+    //trying to get it to return to full zoom at end
+    { geometry: { type: "Point", coordinates: [-94.86,36.79] },
+      properties: { id: "end", zoom: 4}, type: 'Feature' },
+      
 
     /*{ geometry: { type: "Point", coordinates: [-97.87,36.41] },
       properties: { id: "eight", zoom: 6  }, type: 'Feature' },
@@ -260,34 +262,12 @@
     properties: { id: "nine", zoom: 6  }, type: 'Feature' }*/
       ]};
 
-/*var states = { type: 'FeatureCollection', features: [ 
-      type = "Feature",
-      properties: { 
-        "test1": "things",
-        "test2": "more things",
-        "test3": "even more things"},
-      geometry: {
-        type: "Polygon",
-        coordinates:[[
-          [-85.95,39.96],
-          [-87.97,38.27],
-          [-83.49,38.75],
-          [-85.95,39.96]
-        ]]
-      }
-    ]
-  };
 
- /* var map = L.mapbox.map('map',{
-      zoomControl:false
-      });
-*/
- 
+  // create the map 
   var map = L.map('map',{
       zoomControl: false
       }); 
       
-  //map.setView([-96,37.8],4);
 
   // Lauren's mapbox studio tile layer
   L.tileLayer('https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ', {
@@ -295,33 +275,28 @@
       id: 'mapbox.light'
       }).addTo(map);
 
-//https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ
 
+  // create a feature layer that has all of the places in it and add it to the map
   var placesLayer = L.mapbox.featureLayer(places)
       .addTo(map);
 
-  // now, add a geoJSON layer (one of those pointed to above)
-  //var USstates = L.geoJson(states);
-  //var MDA = L.geoJson(MDAstates);
-
-  // then, we need to style the geoJSON layers
-  // for the US states
+    // style for the US states layer
+    // want the borders to be very subtle; they're just reference info
   function styleUS(feature) {
     return {
       weight: 1,
-      opacity: 1,
+      opacity: .4,
       color: 'white',
       dashArray: '3',
-      fillOpacity: 0.2
+      fillOpacity: 0.05
       };
     } 
 
-  //USstates = L.geoJson(states,{style:styleUS}).addTo(map);
-  //MDA = 
-  //L.geoJson(MDAstates,{style:styleUS}).addTo(map);
+  // then add the states to the map
+  L.geoJson(states,{style:styleUS}).addTo(map);
 
 
-  // Ahead of time, select the elements we'll need -
+  // select the elements we'll need -
   // the narrative container and the individual sections
   var narrative = document.getElementById('narrative'),
       sections = narrative.getElementsByTagName('section'),
@@ -329,6 +304,7 @@
 
   setId('cover');
 
+  // function for changing the marker color/size based on scroll location
   function setId(newId) {
       // If the ID hasn't actually changed, don't do anything
       if (newId === currentId) return;
@@ -354,7 +330,7 @@
                 }));
             }
         });
-        // highlight the current section
+        // highlight the current section of text
         for (var i = 0; i < sections.length; i++) {
             sections[i].className = sections[i].id === newId ? 'active' : '';
         }
@@ -363,9 +339,8 @@
         // of this function if it hasn't changed between calls
         currentId = newId;
       }
-  // If you were to do this for real, you would want to use
-  // something like underscore's _.debounce function to prevent this
-  // call from firing constantly.
+
+  // figure out where in the scrolling we are    
   narrative.onscroll = function(e) {
       var narrativeHeight = narrative.offsetHeight;
       var newId = currentId;
@@ -376,9 +351,11 @@
           if (rect.top >= 0 && rect.top <= narrativeHeight) {
               newId = sections[i].id;
           }
-      };
+        };
       setId(newId);
   };
+
+
   </script>
   </body>
 </html>
