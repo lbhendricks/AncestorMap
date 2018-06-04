@@ -283,17 +283,17 @@
    // want the borders to be very subtle; they're just reference info
   function styleUS(feature) {
     return {
-      weight: 1,
-      opacity: .4,
+      weight: 2,
+      opacity: .5,
       color: 'white',
       dashArray: '3',
       fillOpacity: 0, 
-      fillcolor: ""
       };
     }; 
 
   // then add the states to the map
-  //L.geoJson(states,{style:styleUS}).addTo(map);
+  // just add the "cover" (before 1890) because they're not drawing properly otherwise
+  L.geoJson(states_yrs,{filter: drawIDcover, style:styleUS}).addTo(map);
   
  
    // functions that determine the value of a property of the layer and then gets fed into a filter function
@@ -380,7 +380,7 @@
         };
       setId(newId);
 
-      // draw teh states
+      // draw the states
       drawStates(newId);
 
   };
