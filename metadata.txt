@@ -1,0 +1,11 @@
+Lauren Hendricks
+GEOG 590 Web Mapping
+Final Project
+Metadata
+
+Ancestor data compiled by Patricia Bell; much is available on Ancestry.com. Biographical information provided by Patricia Bell (personal communication). 
+
+Except where noted, all photos provided by Patricia Bell or Lauren Hendricks
+
+
+States data originally from from US Census (available at https://www.census.gov/geo/maps-data/data/cbf/cbf_state.html). Used 5m resolution shape file, and converted to GeoJSON using mapshaper.org. Then removed US territories and added statehood year using geojson.io. 
