@@ -1,0 +1,441 @@
+<!-- based on template from mapbox found at https://www.mapbox.com/mapbox.js/example/v1.0.0/scroll-driven-navigation/ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>Ancestor Mapping</title>
+
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
+  <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+  
+  <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+  
+  <style>
+      body { margin:0;
+            padding:0; }
+
+      #map { position:absolute; 
+              top:0; 
+              bottom:0; 
+              /* makes the map size fluid */
+              width:100%; }
+  </style>
+
+</head>
+
+<body>
+  <style>
+      article {
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0px;
+        left:0;
+        overflow:auto;
+        }
+
+      .quiet {
+        color:rgba(0,0,0,0.5);
+        }
+
+      .scroll {
+        display:block;
+        text-align:center;
+        }
+
+      .sections {
+        background:rgba(255,255,255,0.5);
+        width:25%;
+        }
+
+      section {
+        padding:20px;
+        color:rgba(0,0,0,0.5);
+        -webkit-transition:background 500ms, color 500ms;
+                transition:background 500ms, color 500ms;
+        }
+
+      section.active {
+        background:#fff;
+        color:#404040;
+        }
+
+      .img1 {
+        float: left;
+        padding-right: 10px;
+        align: center;
+        }
+
+       .img2 {
+        float: right;
+        padding-left: 10px;
+        align: center;
+        }
+
+      figcaption {
+        font-size: smaller;
+        font-style: italic;
+      }
+
+      
+
+  </style>
+  
+
+  <div id='map'></div>
+
+  <article id='narrative'>
+    <div class='sections prose'>
+      
+      <section id='cover' class='cover active'>
+        <h2>Mapping Maternal Ancestors</h2>
+        <img class="img1" src="img/PatJBell.JPG" alt="Patricia J. Bell" width="50%">
+        <p> This map displays the maternal ancestors of Patricia Bell (neé Jimerson) from the late 1790s to present. By combining basic biographical information with the place that each person was born, we can see how major events in US history have affected individual people and their descendents. 
+      </p>
+        <small class='scroll quiet'>Scroll to Advance &#x25BE;</small>
+      </section>
+
+      <section id='one'>
+        <h3>Peggie Hargrave (?-?)</h3>
+        <p>Peggie Hargrave was probably born in the 1790s in south-central Kentucky or north-central Tennessee. Little is known about Peggie's life or  her parents, though we do know that in 1808 she married James Looney "Looney" Ratliff in Logan, Kentucky.  Looney's mother was Cherokee; because Cherokee membership is matrilineal, Looney was also considered Cherokee. Peggie and Looney had two daugthers: Jane, born in 1814, and <b>Lucy</b>, born in 1827.  Peggie's date and location of death is unknown.</p>
+      </section>
+
+      <section id='two'>
+        <h3>Lucy Ratliff (1827-1871)</h3>
+        <p>Lucy Ratliff was born in 1827 in Cherokee Nation East (modern Tennessee), only a few years prior to the <a href="https://en.wikipedia.org/wiki/Indian_Removal_Act">Indian Removal Act</a> of 1830. She married Lewis Walker Hildebrand in the late 1830s or early 1840s. Lucy was the second of Lewis's four wives. Her sister, Jennie, married Lewis's brother, Isaac Newton Hildebrand. 
+        <br>
+        <br>
+        Lucy's husband, Lewis, was the great grandson of <a href="https://en.wikipedia.org/wiki/Nancy_Ward">Nanyehi</a>, also known as Nancy Ward, a Beloved Woman of the Cherokee who was an important representative of the Cherokee in their early dealings with white colonists. Lewis himself was an assistant conductor of a wagon train on the <a href="https://en.wikipedia.org/wiki/Trail_of_Tears">Trail of Tears</a>; his party left in late 1838 and arrived in "Indian Terriotory" in early March of the following year, having lost 28 members of the party. Lewis's first wife, Nancy Busyhead Walker Hildebrand, died along the trail in southern Missouri.     
+        <br>
+        <figure><img src="img/TrailofTears.jpg" alt="Trail of Tears" width="80%"><figcaption>Trail of Tears interpretive sign in Tahlequah, OK <br> Source: Wolfgang Sauber</figcaption></figure>
+        We do not know whether Lucy accompanied Lewis along the Trail of Tears, or if she was a member of a different wagon party. We do know that she had arrived in Indian Territory by 1842, when her daughter <b>Annie</b> was born. Lucy was 15 when Annie was born.    
+        <br>      
+        <br>
+        While her date of death is unknown, Lucy died before 1871 in the Delaware District of Cherokee Nation West (Indian Territory) and is buried in Rolston Cemetery in Bernice, Oklahoma.</p>
+      </section>
+
+        <section id='three'>
+        <h3>Annie Hildebrand (1842-1892)</h3>
+        <p> Annie Hildebrand was born in 1842 in Cherokee Nation, Indian Territory. While her exact birth location is unknown, it is likely that she was born in what is now eastern Oklahoma. She had one daughter, <b>Joanna</b>, with John Ross Linder. Joanna was born in Cherokee Nation West's Delaware District. Annie died in the same region in 1892 and is buried in Rolston Cemetery in Bernice, Oklahoma.</p>
+      </section>
+
+
+      <section id='four'>
+        <h3>Joanna Ruth Linder (1861-1910)</h3>
+
+        <p>
+        <img class="img2" src="img/JoannaLinder.jpg" alt="Joanna Linder" width="30%">
+       
+        Joanna Linder was born in the Delaware District of Cherokee Nation West in 1861. At the age of 15 she married Felix Grundy Nidiffer (in 1876), and they had 11 children, 10 of which survived to adulthood. After Felix's death in 1896, she remarried and had two additional children. Joanna died in 1919 in Bernice, Oklahoma. 
+        </p>
+
+      </section>
+      
+      <section id='five'>
+        <h3>Annie Lula Nidiffer (1881-1962)</h3>
+        <p>
+        <img class="img1" src="img/AnnieNidiffer_young.jpg" alt="Annie Nidiffer" width="50%">
+         Annie Nidiffer was born in 1881 in the Delaware District of Cherokee Nation West. Annie was the second child of Joanna Linder and Felix Nidiffer, and was born when her mother was 19. 
+        <br>      
+        <br>
+        Annie's great-great-grandfather, George Ward, was assassinated 18 years prior to her birth by the "Pin Indians," a Cherokee secret society devoted to maintaining traditional Cherokee ways of life.
+        <br>      
+        <br>
+        In the early 1890s, Native Americans living in Indian Territory were <a href="https://en.wikipedia.org/wiki/Dawes_Commission">forced to cede all communally held tribal land</a>, which was then divided and allotted to individuals who could prove "blood" descent. Any "surplus" land was then reallocated to Euro-American settlers moving west. As a member of the Cherokee tribe, Annie was eventually allocated a plot of land.
+        <br>      
+        <br> 
+        At the age of 18, Annie was postmistress at her father's small store on Horse Creek near Grand River. Today, this store is under the Grand Lake o' the Cherokees--a reservoir created for hydroelectric power in the late 1930s and early 1940s.
+        <br>      
+        <br> 
+        <img class="img1" src="img/AnnieNidiffer_wedding.jpg" alt="Annie Nidiffer & Jud Allison wedding photo" width="50%">Annie married Hiram Judson "Jud" Allison in 1903 at the age of 22. They settled in Afton, a small town in what was to become northeastern Oklahoma. Annie and Jud had three children, though only two survived past birth: <b>Marguerite</b> and Hiram Judson Jr. 
+        <br>
+        <br>
+        Between the births of her daughter Marguerite (1905) and her son Hiram (1915), the state of Oklahoma was admitted to the United States in 1907. 
+        <br>
+        <br>
+        Annie died in 1962. She is buried in the Mount Hope Cemetery in Afton, Oklahoma. 
+        </p>
+      </section>
+
+      <section id='six'>
+        <h3>Marguerite Drennan Allison (1905-1994)</h3>
+        <p>Marguerite Allison was born in 1905 in Afton, Oklahoma. She graduated from the Oklahoma College for Women (now known as the University of Science & Arts of Oklahoma) in 1927. She then taught physical education and speech to girls at the School for the Blind in Muskogee, Oklahoma for 3 years.  
+        <br>
+        <br>
+
+        <img class="img2" src="img/MargeuriteAllison.jpg" alt="Margeurite Drennan Allison" width="42%">
+        At the age of 25, Marguerite married Fred Patterson Jimerson, a fellow teacher, in Muskogee, Oklahoma, and the newly married couple settled in Marguerite's hometown of Afton in 1930. After one year of teaching Spanish in Afton, Marguerite retired from teaching for 15 years. Her first daughter, <b>Patricia "Pat"</b> was born in 1931, followed by Martha Jean "Jean" in 1933. 
+        <br>
+        <br>
+        During WWII, Marguerite worked for her father at Allison Grain & Lumber Co. After her brother's return from the Army, Margeurite and Fred moved with their family to nearby Miami, Oklahoma, where she returned to teaching at Miami High School. Fred also continued to work in education, serving as Superintendent of Schools for Ottawa County (which includes both Afton and Miami) for over 35 years. In addition to their work in schools, Marguerite and Fred were cattle ranchers, starting with Marguerite's Cherokee allotment and slowly expanding their land holdings. (Margeurite is listed on both the <a href="https://www.archives.gov/research/native-americans/dawes/background.html">Dawes Roll</a> and the <a href="https://www.archives.gov/research/native-americans/rolls/guion-miller-rolls.html">Guion Miller Roll</a>, unlike her younger brother, who was born too late to be listed on the rolls or allotted land.
+        <br>
+        <br>
+        Margeurite retired from teaching in 1967, but maintained active membership in the Ottawa County chapter of the Oklahoma Retired Teachers Association, serving ast the president from 1969-70 and membership chair from 1977-78. She died in 1994 in Miami, Okalhoma, and is buried with her husband at the Mt. Hope Cemetery in Afton. 
+        </p>
+      </section>
+
+      <section id='seven'>
+        <h3>Patricia Ann Jimerson (1931-present)</h3>
+        <p>Patricia "Pat" Ann Jimerson was born in Afton, Oklahoma in 1931. After two years at Northeastern Oklahoma in Miami, she transferred to the University of Oklahoma in Norman. There, she met Donald Ryan "Don" Bell, who she married in 1953 at the age of 21. 
+        <br>
+        <br>
+        <img class="img2" src="img/PatJimerson_Wedding.jpg" width ="200px">
+        The newly married couple moved to Albuquerque, New Mexico and then back to Enid, Oklahoma, where their first daughter, Margaret Lynne "Lynne" was born in 1954. After the birth of their second daughter, they returned to Norman where Pat completed a Master's of English and Don completed engineering school. Their third child, a son, was born during this period. Once their schooling was completed, they moved to Tullahoma, Tennessee, where Pat taught Latin at three different schools. Their fourth child, a daughter, was born while they lived in Tennessee. 
+
+        <br>
+        <br>
+        In 1968, Pat, Don, and their four children moved to Eden Prairie, Minnesota. Pat taught English at the local high school until she and Don briefly returned to live in Tennessee in 1975. When they moved back to Eden Prairie in the late 1970s, Pat retired and began to actively pursue publishing. She is a pioneer in the world of self-publishing, and is the the author of multiple books, including <a href="https://www.amazon.com/Roughing-Elegantly-Practical-Guide-Camping/dp/0961822708"> Roughing it Elegantly: A Practical Guide to Canoe Camping</a>, based on her years of experience in northern Minnesota's Boundary Waters Canoe Area with Don. She currently lives in Eden Prairie. 
+        </p> 
+      </section>
+
+      <!-- blank section -->
+      <section id="end"> 
+            <p> 
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+         </p>
+
+
+      </section>
+     
+    </div>
+  </article>
+
+  <!-- reference to the US states JSON file, with statehood year added-->
+  <script type="text/javascript" src="data_json/cb_2017_us_state_5m_statehood_yr_noterritories.json"></script>
+
+   <!-- reference to the US states JSON file, with true/false based on lifetimes of people in map-->
+    <script type="text/javascript" src="data_json/states_yrs.json"></script>
+
+  <script>
+  // with Lauren's access token
+  L.mapbox.accessToken = 'pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjamh2M2d5ajEwdXo3M3FydzQ4c2hzbzJxIn0.S5JR4g-IHGGlYu4Y7p16gg';
+
+  // In this case, we just hardcode data into the file. This could be dynamic.
+  // The important part about this data is that the 'id' property matches
+  // the HTML above - that's how we figure out how to link up the
+  // map and the data.
+
+  // NOTE THAT THESE NEED TO BE LONG,LAT!!!!
+  var places = { type: 'FeatureCollection', features: [
+
+    { geometry: { type: "Point", coordinates: [-86.92,36.65] },
+      properties: { id: "cover", zoom: 4 }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-94.86,36.79] },
+      properties: { id: "seven", zoom: 6  }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-94.96,36.69] },
+      properties: { id: "six", zoom: 6 }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-94.9,36.51] },
+      properties: { id: "five", zoom: 6  }, type: 'Feature' },
+ 
+     { geometry: { type: "Point", coordinates: [-94.75,36.61] },
+      properties: { id: "four", zoom: 6 }, type: 'Feature', },
+
+    { geometry: { type: "Point", coordinates: [-94.6,36.71] },
+      properties: { id: "three", zoom: 6  }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-87.12,36.75] },
+      properties: { id: "two", zoom: 6}, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-86.92,36.65] },
+      properties: { id: "one", zoom: 6}, type: 'Feature' },
+
+    //trying to get it to return to full zoom at end
+    { geometry: { type: "Point", coordinates: [-93.46,44.86] },
+      properties: { id: "end", zoom: 4}, type: 'Feature' },
+      
+
+    /*{ geometry: { type: "Point", coordinates: [-97.87,36.41] },
+      properties: { id: "eight", zoom: 6  }, type: 'Feature' },
+
+    { geometry: { type: "Point", coordinates: [-93.25,44.98] },
+    properties: { id: "nine", zoom: 6  }, type: 'Feature' }*/
+      ]};
+
+
+  // create the map 
+  var map = L.map('map',{
+      zoomControl: false
+      }); 
+      
+
+  // Lauren's mapbox studio tile layer
+  L.tileLayer('https://api.mapbox.com/styles/v1/laurenbhendricks/cjftxv7us3shz2rqm2grktj7o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGF1cmVuYmhlbmRyaWNrcyIsImEiOiJjaWs1cnd3YmowMDhucHRrc3Q5a2J5cjE3In0.j9sCY68mpCwY6YIOOWyIEQ', {
+      attribution: 'Map Style © <a href="http://mapbox.com">Mapbox</a>',
+      id: 'mapbox.light'
+      }).addTo(map);
+
+
+  // create a feature layer that has all of the places in it and add it to the map
+  var placesLayer = L.mapbox.featureLayer(places)
+      .addTo(map);
+
+  
+   // style for the US states layer
+   // want the borders to be very subtle; they're just reference info
+  function styleUS(feature) {
+    return {
+      weight: 2,
+      opacity: .5,
+      color: 'white',
+      dashArray: '3',
+      fillOpacity: 0, 
+      };
+    }; 
+
+  // Create Leaflet layers based on the slection JSON features  (JRM)
+  var cover = L.geoJson(states_yrs,{filter: drawIDcover, style:styleUS});
+  var statesC = L.geoJson(states_yrs, {filter: drawIDcover, style: styleUS});
+  var states1 = L.geoJson(states_yrs, {filter: drawIDone, style:styleUS});
+  var states2 = L.geoJson(states_yrs, {filter: drawIDtwo, style:styleUS});
+  var states3 = L.geoJson(states_yrs, {filter: drawIDthree, style:styleUS});
+  var states4 = L.geoJson(states_yrs, {filter: drawIDfour, style:styleUS});
+  var states5 = L.geoJson(states_yrs, {filter: drawIDfive, style:styleUS});
+ // cover.addTo(map);
+
+  
+ 
+   // functions that determine the value of a property of the layer and then gets fed into a filter function
+   // now can we do it where we pick the property based on the function call?
+   function drawIDcover (feature, property) {
+        if (feature.properties.cover === "TRUE") return true;
+            };
+
+  function drawIDone (feature, property) {
+        if (feature.properties.one === "TRUE") return true;
+            };
+
+  function drawIDtwo (feature, property) {
+        if (feature.properties.two === "TRUE") return true;
+            };
+
+  function drawIDthree (feature, property) {
+        if (feature.properties.three === "TRUE") return true;
+            };
+  function drawIDfour (feature, property) {
+      if (feature.properties.four === "TRUE") return true;
+          };
+
+    function drawIDfive (feature, property) {
+      if (feature.properties.five === "TRUE") return true;
+          };
+
+
+  // select the elements we'll need -
+  // the narrative container and the individual sections
+  var narrative = document.getElementById('narrative'),
+      sections = narrative.getElementsByTagName('section'),
+      currentId = '';
+
+  setId('cover');
+
+  // function for changing the marker color/size based on scroll location
+  function setId(newId) {
+      // If the ID hasn't actually changed, don't do anything
+      if (newId === currentId) return;
+
+      
+        // Otherwise, iterate through layers, setting the current
+        // marker to a different color and zooming to it.
+        placesLayer.eachLayer(function(layer) {
+            if (layer.feature.properties.id === newId) {
+                map.setView(layer.getLatLng(), layer.feature.properties.zoom);
+                //console.log(layer.getLatLng());
+                //console.log(layer.feature.properties.zoom);
+                layer.setIcon(L.mapbox.marker.icon({
+                    'marker-color': '#6b4aae',
+                    'marker-size': 'large'
+                }));
+                //add the states
+                //L.geoJson(state_lyr, {style:styleUS}).addTo(map);
+                //console.log(states);
+            } else {
+                layer.setIcon(L.mapbox.marker.icon({
+                    'marker-color': '#404040',
+                    'marker-size': 'small'
+                }));
+            }
+        });
+        // highlight the current section of text
+        for (var i = 0; i < sections.length; i++) {
+            sections[i].className = sections[i].id === newId ? 'active' : '';
+        }
+       
+
+        // remove the current state layer JRM
+        if (currentId != '' && newId != currentId ){
+          console.log("remove " + currentId);
+          removeStates(currentId);
+        } 
+
+        // And then set the new id as the current one,
+        // so that we know to do nothing at the beginning
+        // of this function if it hasn't changed between calls
+        currentId = newId;
+         //draw the new states  (do this within the setID rather than withing the onScroll - you only want them to draw when there is a new section, not on every scroll. JRM)
+        console.log("add newID "+newId);
+        drawStates(newId);
+        
+   }
+
+  // figure out where in the scrolling we are    
+  narrative.onscroll = function(e) {
+      var narrativeHeight = narrative.offsetHeight;
+      var newId = currentId;
+      // Find the section that's currently scrolled-to.
+      // We iterate backwards here so that we find the topmost one.
+      for (var i = sections.length - 1; i >= 0; i--) {
+          var rect = sections[i].getBoundingClientRect();
+          if (rect.top >= 0 && rect.top <= narrativeHeight) {
+              newId = sections[i].id;
+          }
+        };
+      setId(newId);
+  };
+
+// adds the given state layer to the map
+  function drawStates(id){
+        if(id==="cover"){ 
+              statesC.addTo(map);
+          } else if (id==="one"){
+              states1.addTo(map);
+          } else if (id==="two"){
+              states2.addTo(map);
+          } else if (id==="three"){
+              states3.addTo(map);
+          } else if (id==="four"){
+              states4.addTo(map);
+          } else{
+              states5.addTo(map);
+         }
+      };
+
+// removes the given state layer from the map JRM
+function removeStates(id){
+        if(id==="cover"){ 
+            map.removeLayer(statesC);
+          } else if (id==="one") {
+              map.removeLayer(states1);
+          } else if (id==="two"){
+              map.removeLayer(states2);
+          } else if (id==="three"){
+             map.removeLayer(states3);
+          } else if (id==="four"){
+              map.removeLayer(states4);
+          } else{
+              map.removeLayer(states5);
+          }
+      };
+
+  </script>
+  </body>
+</html>
+
