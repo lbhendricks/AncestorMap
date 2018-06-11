@@ -291,9 +291,10 @@
       };
     }; 
 
+
   // then add the states to the map
   // just add the "cover" (before 1890) because they're not drawing properly otherwise
-  L.geoJson(states_yrs,{filter: drawIDcover, style:styleUS}).addTo(map);
+  //L.geoJson(states_yrs,{filter: drawIDcover, style:styleUS}).addTo(map);
   
  
    // functions that determine the value of a property of the layer and then gets fed into a filter function
@@ -317,10 +318,19 @@
       if (feature.properties.four === "TRUE") return true;
           };
 
-    function drawIDfive (feature, property) {
-      if (feature.properties.five === "TRUE") return true;
-          };
+  function drawIDfive (feature, property) {
+    if (feature.properties.five === "TRUE") return true;
+        };
 
+  // Create Leaflet layers based on the slection JSON features 
+  var cover = L.geoJson(states_yrs,{filter: drawIDcover, style:styleUS});
+  var statesC = L.geoJson(states_yrs, {filter: drawIDcover, style: styleUS});
+  var states1 = L.geoJson(states_yrs, {filter: drawIDone, style:styleUS});
+  var states2 = L.geoJson(states_yrs, {filter: drawIDtwo, style:styleUS});
+  var states3 = L.geoJson(states_yrs, {filter: drawIDthree, style:styleUS});
+  var states4 = L.geoJson(states_yrs, {filter: drawIDfour, style:styleUS});
+  var states5 = L.geoJson(states_yrs, {filter: drawIDfive, style:styleUS});
+ // cover.addTo(map);
 
   // select the elements we'll need -
   // the narrative container and the individual sections
@@ -360,10 +370,21 @@
         for (var i = 0; i < sections.length; i++) {
             sections[i].className = sections[i].id === newId ? 'active' : '';
         }
+
+         // remove the current state layer 
+        if (currentId != '' && newId != currentId ){
+          console.log("remove " + currentId);
+          removeStates(currentId);
+        } 
+
         // And then set the new id as the current one,
         // so that we know to do nothing at the beginning
         // of this function if it hasn't changed between calls
         currentId = newId;
+
+        //draw the new states 
+        console.log("add newID "+newId);
+        drawStates(newId);
       }
 
   // figure out where in the scrolling we are    
@@ -379,23 +400,41 @@
           }
         };
       setId(newId);
-
-      // draw the states
-      drawStates(newId);
-
   };
 
+  // adds the given state layer to the map
   function drawStates(id){
-        if(id==="cover")
-          {L.geoJson(states_yrs, {filter: drawIDcover, style: styleUS}).addTo(map);
-            } else if (id==="one") {L.geoJson(states_yrs, {filter: drawIDone, style: styleUS}).addTo(map);
-                } else if (id==="two") {L.geoJson(states_yrs, {filter: drawIDtwo, style:styleUS}).addTo(map);
-                    } else if (id==="three") {L.geoJson(states_yrs, {filter: drawIDthree, style:styleUS}).addTo(map);
-                        } else if (id==="four") {L.geoJson(states_yrs, {filter: drawIDfour, style: styleUS}).addTo(map);
-                            } else {L.geoJson(states_yrs, {filter: drawIDfive, style: styleUS}).addTo(map);
-              }
+        if(id==="cover"){ 
+              statesC.addTo(map);
+          } else if (id==="one"){
+              states1.addTo(map);
+          } else if (id==="two"){
+              states2.addTo(map);
+          } else if (id==="three"){
+              states3.addTo(map);
+          } else if (id==="four"){
+              states4.addTo(map);
+          } else{
+              states5.addTo(map);
+         }
       };
 
+  // removes the given state layer from the map JRM
+  function removeStates(id){
+          if(id==="cover"){ 
+              map.removeLayer(statesC);
+            } else if (id==="one") {
+                map.removeLayer(states1);
+            } else if (id==="two"){
+                map.removeLayer(states2);
+            } else if (id==="three"){
+               map.removeLayer(states3);
+            } else if (id==="four"){
+                map.removeLayer(states4);
+            } else{
+                map.removeLayer(states5);
+            }
+        };
 
   </script>
   </body>
